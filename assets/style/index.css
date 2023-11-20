@@ -7,6 +7,7 @@
     --body-bg-colour:#5ea4e7;
     --white-bg-colour:#fff;
     --set-alarm-btn:#1b69b4;
+    --pause-alarm-btn:#b41b1d;
     --boxes-border-radius:15px;
 }
 
@@ -80,3 +81,21 @@ input[type=text]:focus{
     border: 3px solid var(--set-alarm-btn);    
 }
 
+.pause-btn{
+    width: 150px;
+    height: 40px;
+    margin-top: 15px;
+    border-radius:var(--boxes-border-radius);
+    background:var(--pause-alarm-btn);
+    color: var(--white-bg-colour);
+    background-size:  15px;
+    font-size: 17px;
+}
+
+.visible{
+    visibility:visible;
+}
+
+.no-visible {
+    visibility: hidden;
+}

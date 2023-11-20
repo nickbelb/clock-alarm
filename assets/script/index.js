@@ -10,13 +10,21 @@
   const alarmHours = selectObject('.alarm-hours');
   const alarmMinutes = selectObject('.alarm-minutes');
   const setAlarmBtn = selectObject('.set-alarm-btn');
-  const userAlarmTime = selectObject('.alarm-time');
-  let alarmSetted=false;
-  
-  function showTime() {
-    let hour= (new Date).toTimeString().slice(0,5);
-    clockBoard.textContent = hour;
+  const alarmTime = selectObject('.alarm-time');
+  let alarmAudio = new Audio('./assets/media/alarm.mp3');
+  const pauseBtn = selectObject('.pause-btn');
+  let hours='';
+  let userAlarmTime ='';
+
+  function pauseAlarm(){
+    alarmAudio.pause();
   }
+
+  function showTime() {
+    hours = (new Date).toTimeString().slice(0,5);
+    clockBoard.textContent = hours;
+  }
+
 
   function validateInput(input) {
     if (isNaN(input.value)){
@@ -24,9 +32,21 @@
     }
   }
 
+  function checkAlarmTime() {
+    if(userAlarmTime.split(' ').join('') === hours){
+      alarmAudio.play();
+      if(pauseBtn.classList.contains('no-visible')){
+        pauseBtn.classList.remove('no-visible');
+        pauseBtn.classList.add('visible');
+      }
+    }
+  }
+  
   function setAlarm() {
-
-    console.log("adad");
+    if(pauseBtn.classList.contains('visible')){
+      pauseBtn.classList.remove('visible');
+      pauseBtn.classList.add('no-visible');
+    }
     if(parseInt(alarmHours.value)>23){
       alarmHours.focus();
     }
@@ -34,9 +54,9 @@
       alarmMinutes.focus();
     }
     else{
-      let userAlarmTime = `${alarmHours.value} : ${alarmMinutes.value}`;
-      alarmSetted.textContent = userAlarmTime;
-      alarmSetted=true;
+      userAlarmTime = `${alarmHours.value} : ${alarmMinutes.value}`;
+      alarmTime.textContent = userAlarmTime;
+      setInterval(checkAlarmTime,1000);
     }
   }
 
@@ -53,8 +73,8 @@
     setInterval(showTime,1000);
   });
   
-  onEvent('click',setAlarmBtn,setAlarm)
-
+  onEvent('click',setAlarmBtn,setAlarm);
+  onEvent('click',pauseBtn,pauseAlarm);
   
 
   
