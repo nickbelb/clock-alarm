@@ -1,3 +1,3 @@
 # clock-alarm
 
-CLick [Here](https://nickbelb.github.io/digital-den/) to see a demo
+Click [Here](https://nickbelb.github.io/clock-alarm/) to see a demo
