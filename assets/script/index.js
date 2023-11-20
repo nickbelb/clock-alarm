@@ -15,9 +15,11 @@
   const pauseBtn = selectObject('.pause-btn');
   let hours='';
   let userAlarmTime ='';
+  let intervalId;
 
   function pauseAlarm(){
     alarmAudio.pause();
+    clearInterval(intervalId);
   }
 
   function showTime() {
@@ -56,7 +58,7 @@
     else{
       userAlarmTime = `${alarmHours.value} : ${alarmMinutes.value}`;
       alarmTime.textContent = userAlarmTime;
-      setInterval(checkAlarmTime,1000);
+      intervalId=setInterval(checkAlarmTime,1000);
     }
   }
 
