@@ -4,9 +4,79 @@
 
 :root{
     --app-font-general:'Outfit', sans-serif;
+    --body-bg-colour:#5ea4e7;
+    --white-bg-colour:#fff;
+    --set-alarm-btn:#1b69b4;
+    --boxes-border-radius:15px;
 }
 
 .container{
     width: min(100% - 30px,1080px);
     margin-inline:auto;
+    height: 100%;
 }
+
+main{
+    height: 100dvh;
+}
+
+body{
+    background-color: var(--body-bg-colour);
+    font-family: var(--app-font-general);
+}
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.clock-board{
+    width: 700px;
+    height: 230px;
+    text-align: center;
+    font-size: 170px;
+    letter-spacing: 0.08em;
+    color:var(--white-bg-colour);
+}
+
+.alarm-setted{
+    color: var(--white-bg-colour);
+    font-size: 17px; 
+    letter-spacing: 0.08em;
+}
+
+.alarm-icon{
+    margin-right: 5px;
+}
+
+.alarm-set{
+    margin-top: 20px;
+}
+
+input[type=text]{
+    width: 80px;
+    margin: 10px 15px 0 0;
+    height: 40px;
+    border-radius: var(--boxes-border-radius);
+    text-align: center;
+    background: rgb(255,255,255);
+    background-size:  15px;
+    font-size: 17px;
+}
+
+input[type=button]{
+    width: 150px;
+    height: 40px;
+    border-radius:var(--boxes-border-radius);
+    background:var(--set-alarm-btn);
+    color: var(--white-bg-colour);
+    background-size:  15px;
+    font-size: 17px;
+}
+
+input[type=text]:focus{
+    border: 3px solid var(--set-alarm-btn);    
+}
+
