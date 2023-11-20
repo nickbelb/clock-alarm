@@ -10,13 +10,16 @@
   const alarmHours = selectObject('.alarm-hours');
   const alarmMinutes = selectObject('.alarm-minutes');
   const setAlarmBtn = selectObject('.set-alarm-btn');
-  const userAlarmTime = selectObject('.alarm-time');
-  let alarmSetted=false;
-  
+  const alarmTime = selectObject('.alarm-time');
+  let alarmAudio = new Audio('../res/alarm.mp3');
+  let hours='';
+  let userAlarmTime ='';
+
   function showTime() {
-    let hour= (new Date).toTimeString().slice(0,5);
-    clockBoard.textContent = hour;
+    hours = (new Date).toTimeString().slice(0,5);
+    clockBoard.textContent = hours;
   }
+
 
   function validateInput(input) {
     if (isNaN(input.value)){
@@ -24,9 +27,13 @@
     }
   }
 
-  function setAlarm() {
+  function checkAlarmTime() {
+    if(userAlarmTime.split(' ').join('') === hours){
 
-    console.log("adad");
+    }
+  }
+  
+  function setAlarm() {
     if(parseInt(alarmHours.value)>23){
       alarmHours.focus();
     }
@@ -34,9 +41,9 @@
       alarmMinutes.focus();
     }
     else{
-      let userAlarmTime = `${alarmHours.value} : ${alarmMinutes.value}`;
-      alarmSetted.textContent = userAlarmTime;
-      alarmSetted=true;
+      userAlarmTime = `${alarmHours.value} : ${alarmMinutes.value}`;
+      alarmTime.textContent = userAlarmTime;
+      setInterval(checkAlarmTime,1000);
     }
   }
 
