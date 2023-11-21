@@ -49,10 +49,10 @@
       pauseBtn.classList.remove('visible');
       pauseBtn.classList.add('no-visible');
     }
-    if(parseInt(alarmHours.value)>23){
+    if(parseInt(alarmHours.value)>23 || alarmHours.value==''){
       alarmHours.focus();
     }
-    else if(parseInt(alarmMinutes.value)>59){
+    else if(parseInt(alarmMinutes.value)>59 || alarmMinutes.value==''){
       alarmMinutes.focus();
     }
     else{
